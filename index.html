@@ -1,0 +1,103 @@
+<!doctype html>
+<html ng-app="todoApp">
+
+<head>
+    <meta charset="utf-8">
+
+    <link rel="stylesheet" href="todo.css">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+</head>
+
+<body>
+    <nav class="navbar navbar-default">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="#">
+                        Avaliações
+                </a>
+            </div>
+        </div>
+    </nav>
+    <div ng-controller="todoListController as todoList" class="container">
+        <table class="table table-bordered table-hover">
+            <tr>
+                <td></td>
+                <td>Alunos</td>
+                <td>nota 1</td>
+                <td>nota 2</td>
+                <td>nota 3</td>
+                <td>nota 4</td>
+                <td></td>
+            </tr>
+            <tr ng-repeat="todo in todoList.todos">teste
+                <td><input type="checkbox" ng-model="todo.done"></td>
+                <td> <span id="nomet">{{todo.text}}</span></td>
+                <td> <span id="nota1t">{{todo.nota1}}</span></td>
+                <td> <span id="nota2t">{{todo.nota2}}</span></td>
+                <td> <span id="nota3t">{{todo.nota3}}</span></td>
+                <td> <span id="nota4t">{{todo.nota4}}</span></td>
+                <td><a ng-click="todoList.avaliacao(todo)" id="avaliacao" class=" btn btn-primary" data-toggle="modal" data-target="#modal" >Avaliação</a></td>
+            </tr>
+
+        </table>
+        <div class="row">
+            <button ng-click="todoList.archive()" class="btn btn-danger col-md-2 col-md-offset-4 col-xs-6 col-xs-offset-4 col-sm-4 col-sm-offset-4 col-lg-2 col-lg-offset-4">Excluir selecionado</button>
+        </div>
+        <form>
+            <div class="form-group">
+                <label for="InputName">Nome</label>
+                <input type="text" class="form-control" id="InputName" placeholder="Nome" ng-model="todoList.todoText">
+            </div>
+            <div class="form-group">
+                <label for="InputNota1">Nota1</label>
+                <input ng-model="todoList.todoNota1" type="number" class="form-control" id="InputNota1" placeholder="Nota1">
+            </div>
+            <div class="form-group">
+                <label for="InputNota2">Nota2</label>
+                <input ng-model="todoList.todoNota2" type="number" class="form-control" id="InputNota2" placeholder="Nota2">
+            </div>
+            <div class="form-group">
+                <label for="InputNota3">Nota3</label>
+                <input ng-model="todoList.todoNota3" type="number" class="form-control" id="InputNota3" placeholder="Nota3">
+            </div>
+            <div class="form-group">
+                <label for="InputNota4">Nota4</label>
+                <input ng-model="todoList.todoNota4" type="number" class="form-control" id="InputNota4" placeholder="Nota4">
+            </div>
+
+            <button ng-click="todoList.addTodo()" class="btn btn-default">Inserir Aluno</button>
+        </form>
+    </div>
+
+    <!-- modal -->
+    <div ng-controller="todoListController as todoList" id="modal" class="modal fade" tabindex="-1" role="dialog">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title"><span id="nome"></span></h4>
+                </div>
+                <div class="modal-body">
+                    <p>Media: <span id="media"></span></p>
+                    <p>Conceito: <span id="conceito"></span></p>
+                    <p>Status: <span id="status"></span></p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    
+                </div>
+            </div>
+            <!-- /.modal-content -->
+        </div>
+        <!-- /.modal-dialog -->
+    </div>
+    <!-- /.modal -->
+    <script src="js/jquery-3.1.1.min.js"></script>
+    <script src="modal.js"></script>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.2/angular.min.js"></script>
+    <script src="todo.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+</body>
+
+</html>
